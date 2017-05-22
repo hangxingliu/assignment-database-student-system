@@ -1,4 +1,6 @@
-src/old_*
+dist
+src/_old_*
+src/old_index.html
 
 # Logs
 logs

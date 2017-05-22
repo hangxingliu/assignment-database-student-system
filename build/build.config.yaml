@@ -4,7 +4,7 @@ src:
     assets: 
         - libs
     pages: 
-        - "*.html"
+        - "index.html"
     scripts:
         - "scripts/index.js"
     styles:
@@ -17,7 +17,7 @@ watch:
     - "src"
 
 processor:
-    sass: false
+    sass: true
     less: false
     autoprefixer: false
     babel: 
