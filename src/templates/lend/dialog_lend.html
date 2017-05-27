@@ -1,0 +1,37 @@
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title">图书借阅</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+		</div>
+		<div class="modal-body">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12 alert-container" style="min-height: 150px">
+					</div>
+					<div class="col-12 col-md-10 my-2">
+						<div class="input-group">
+							<span class="input-group-addon" style="min-width: 100px">序列码</span>
+							<input name="SerialCode" type="text" class="form-control" 
+								onkeyup="app.router.command('lend/askCouldLend')"
+								value="<%=data.SerialCode%>"/>
+						</div>
+					</div>
+					<div class="col-12 col-md-10 my-2">
+						<div class="input-group">
+							<span class="input-group-addon" style="min-width: 100px">读者编号</span>
+							<input name="ReaderID" type="text" class="form-control" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-success" id="btnLendBook" disabled 
+				onclick="app.router.command('lend/lend')">借阅</button>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+		</div>
+	</div>
+</div>

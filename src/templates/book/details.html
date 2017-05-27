@@ -1,0 +1,68 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<h4>图书信息</h4>
+			<%info=data[0]%>
+			<div class="d-flex">
+				<div class="align-self-start">
+					<img src="404" alt="封面" style="width: 150px;min-height: 200px;" class="bg-faded">
+				</div>
+				<div class="align-self-start ml-2 w-100">
+					<table class="table table-striped">
+						<tbody>
+							<tr><th width="100px">书名</th><th><%=info.BookName%></th></tr>
+							<tr><th>ISBN</th><td><%=info.ISBN%></td></tr>
+							<tr><th>作者</th><td><%=info.Author%></td></tr>
+							<tr><th>发行社</th><td><%=info.Publisher%></td></tr>
+							<tr><th>价格</th><td><%=info.Price%> <small>元</small></td></tr>
+							<tr><th>库存</th><td><%=data.length%></td></tr>
+							<tr><th>简介</th><td><%=info.Summary%></td></tr>
+						</tbody>
+					</table>
+				</div>
+				
+			</div><!-- /.d-flex-->
+		</div>
+	</div> <!-- /.row-->
+
+	<div class="row mt-2">
+		<div class="col-12">
+			<div class="clearfix">
+				<h4 class="float-left">库存情况</h4>
+				<a class="float-right ion-plus text-success" href="#book" 
+					onclick="app.router.command('add')">&nbsp;&nbsp;添加库存</a>
+			</div>
+			<table class="table table-striped">
+				<thead> <tr> 
+					<th width="30%">书名</th> 
+					<th width="15%">序列码</th> 
+					<th width="40%">状态</th> 
+					<th width="15%">操作</th> 
+				</tr> </thead>
+				<tbody>
+					<% if(data && data[0] && data[0].SerialCode) {
+						for(var index in data) { var item = data[index]; %>
+						<tr>
+							<td><%= item.BookName %></td>
+							<td><%= item.SerialCode %></td>
+							<td class="<%=item.LendTime?'':'text-success'%>">
+								<%= item.LendTime ? (item.ReaderName + ' 借于 ' + item.LendTime) : '可借'%>
+							</td>
+							<td>
+								<%if(item.LendTime){%>
+									<a href="#lend" onclick="app.router.command('lend/back_' + $(this).data('id'))" 
+										data-id="<%=item.LendID%>">还书</a>
+								<% }else{ %>
+									<a href="#book/details_<%=item.BookID%>"
+										onclick="app.router.command('lend/dialog_<%=item.SerialCode%>')">借出</a>
+								<%}%>
+							</td>
+						</tr>
+					<% }
+					 } %>
+				</tbody>
+			</table>
+		</div>
+	</div> <!-- /.row-->
+
+</div>

@@ -14,8 +14,17 @@
 
 <body>
 	<%- include("modules/menu") %>
-	
+	<div class="container-fluid main-container">
+		<div class="row py-4">
+			<%- include("modules/card_reader") %>
+			<%- include("modules/card_lend") %>
+			<%- include("modules/card_book") %>
+		</div>
+	</div>
 
+	<div class="modal fade" id="dlgMain"></div>
+	
+	<%- include("modules/templates") %>	
 	<%- include("modules/js") %>
 </body>
 </html>

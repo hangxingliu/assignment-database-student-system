@@ -1,0 +1,30 @@
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title">添加图书库存</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+		</div>
+		<div class="modal-body">
+			<input type="hidden" name="BookInfoID" value="<%=data.BookInfoID%>" />
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="alert alert-danger" style="display: none"></div>
+					</div>
+					<div class="col-12 my-2">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">序列码</span>
+							<input name="SerialCode" type="text" class="form-control" >
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-success" onclick="app.router.command('addConfirmed')">添加</button>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+		</div>
+	</div>
+</div>

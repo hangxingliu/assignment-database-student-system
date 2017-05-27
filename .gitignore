@@ -1,6 +1,8 @@
 dist
 src/_old_*
 src/old_index.html
+count-lines.sh
+.coding-logs
 
 # Logs
 logs

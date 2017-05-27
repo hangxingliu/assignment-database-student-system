@@ -1,0 +1,62 @@
+<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title">图书信息</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+		</div>
+		<div class="modal-body">
+			<input type="hidden" name="BookInfoID" value="<%=data.BookInfoID%>" />
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="alert alert-danger" style="display: none"></div>
+					</div>
+					<div class="col-12 col-md-6 my-2">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">ISBN</span>
+							<input name="ISBN" value="<%=data.ISBN%>" type="text" class="form-control" >
+						</div>
+					</div>
+					<div class="col-12 col-md-6 my-2">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">书名</span>
+							<input name="BookName" value="<%=data.BookName%>" type="text" class="form-control">
+						</div>
+					</div>
+					<div class="col-12 col-md-4 my-2">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">作者</span>
+							<input name="Author" value="<%=data.Author%>" type="text" class="form-control">
+						</div>
+					</div>
+					<div class="col-12 col-md-4 my-2">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">出版社</span>
+							<input name="Publisher" value="<%=data.Publisher%>" type="text" class="form-control">
+						</div>
+					</div>
+					<div class="col-12 col-md-4 my-2">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">价格</span>
+							<input name="Price" value="<%=data.Price%>" type="number" class="form-control">
+						</div>
+					</div>
+					<div class="col-12 my-2">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">简介</span>
+							<textarea name="Summary" style="min-height: 140px" 
+								class="form-control"><%=data.Summary%></textarea>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-success" onclick="app.router.command('save')">保存</button>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+		</div>
+	</div>
+</div>

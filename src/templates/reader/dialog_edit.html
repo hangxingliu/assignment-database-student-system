@@ -1,0 +1,64 @@
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title">读者信息</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+		</div>
+		<div class="modal-body">
+			<input type="hidden" name="ReaderID" value="<%=data.ReaderID%>" />
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="alert alert-danger" style="display: none"></div>
+					</div>
+					<div class="col-12 col-md-6 my-2">
+						<div class="input-group">
+							<span class="input-group-addon">姓名</span>
+							<input name="Name" type="text" class="form-control" 
+								value="<%=data.Name%>"/>
+						</div>
+					</div>
+					<div class="col-12 col-md-6 my-2">
+						<div class="input-group">
+							<span class="input-group-addon">编号</span>
+							<input name="Card" type="text" class="form-control"
+								value="<%=data.Card%>" />
+						</div>
+					</div>
+					<div class="col-12 col-md-6 my-2">
+						<div class="input-group">
+							<span class="input-group-addon">性别</span>
+							<select name="Sex" class="form-control">
+								<option value="false" <%=data.Sex || 'selected'%> >男</option>
+								<option value="true" <%=data.Sex && 'selected'%> >女</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-12 col-md-6 my-2">
+						<div class="input-group">
+							<span class="input-group-addon">生日</span>
+							<input name="Born" type="text" class="form-control"
+								value="<%=data.Born%>">
+						</div>
+					</div>
+					<div class="col-12 col-md-6 my-2">
+						<div class="input-group">
+							<span class="input-group-addon">专业</span>
+							<input name="Spec" type="text" class="form-control"
+								value="<%=data.Spec%>">
+						</div>
+					</div>
+					<!--<div class="col-12 col-md-4 my-2">
+						<img src="" alt="">
+					</div>-->
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-success" onclick="app.router.command('save')">保存</button>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+		</div>
+	</div>
+</div>

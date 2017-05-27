@@ -1,0 +1,21 @@
+@import "_menu.scss";
+@import "_card.scss";
+
+html, body {
+	height: 100%;
+	background: #fafafa;
+}
+.main-container {
+	margin: 0 20px 0 ($menuMinWidth + 20px);
+
+}
+table thead th {
+	white-space: nowrap;
+}
+.modal-content,
+.form-control,
+.input-group-addon,
+.input-group,
+.card,
+.alert,
+.btn{ border-radius: 0 !important; }

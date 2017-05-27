@@ -1,0 +1,27 @@
+<thead>
+	<tr>
+		<th>借阅ID</th>
+		<th>图书</th>
+		<th>读者</th>
+		<th>借阅时间</th>
+		<th>归还时间/操作</th>
+	</tr>
+</thead>
+<tbody>
+	<% for(var index in data) { var item = data[index]; %>
+		<tr>
+			<td><%=item.LendID%></td>
+			<td><%=item.BookName%>
+				<small><%=item.SerialCode%></small></td>
+			<td><%=item.Name%>
+				<small><%=item.Card%></small></td>
+			<td><%=item.LendTime%></td>
+			<td><%if(item.BackTime){%>
+					<%=item.BackTime%>
+				<%}else{%>
+					<a href="#lend" onclick="app.router.command('lend/back_' + $(this).data('id'))" 
+						data-id="<%=item.LendID%>">还书</a>
+				<%}%></td>
+		</tr>
+	<%}%>
+</tbody>

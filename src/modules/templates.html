@@ -1,0 +1,22 @@
+<% 
+	var list = [
+		'book/table',
+		'book/details',
+		'book/dialog_add_book',
+		'book/dialog_edit_info',
+		
+		'reader/dialog_edit',
+		'reader/table',
+
+		'lend/dialog_lend',
+		'lend/table',
+		'lend/you_can_lend',
+		'lend/could_not_lend',
+		'lend/lend_failed',
+		'lend/please_input_info',
+		'lend/dialog_back_result'
+	];
+%>
+<% for(tmpl of list) { %>
+<script type="text/template" data-tmpl="<%=tmpl%>" src="templates/<%=tmpl%>.html"></script>
+<% } %>

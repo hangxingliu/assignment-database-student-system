@@ -19,7 +19,7 @@ watch:
 processor:
     sass: true
     less: false
-    autoprefixer: false
+    autoprefixer: true
     babel: 
         enable: true
         babelrc: .babelrc

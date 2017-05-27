@@ -1,0 +1,63 @@
+$menuMaxWidth: 200px;
+$menuMinWidth: 60px;
+$menuBackground: #29b6f6;
+$menuActiveBackground: #039be5;
+$menuHandlerBackground: #01579b;
+$menuForeground: #e1f5fe;
+
+.left-menu {
+	position: fixed;
+	top: 0;left: 0;
+	z-index: 1024;
+	overflow-x: hidden; // 为了平滑展开
+	width: $menuMinWidth;
+	background-color: $menuBackground;
+	height: 100%;
+	transition: all .2s;
+
+	//阴影
+	box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 
+		0 1px 18px 0 rgba(0,0,0,0.12),
+		0 3px 5px -1px rgba(0,0,0,0.3);
+
+
+	.list-group-item {
+		width: $menuMaxWidth; // 为了平滑展开
+		padding-left: .75rem;
+		padding-top: .25rem;
+		padding-bottom: .25rem;
+		
+		border: none;
+		background: $menuBackground;
+		color: $menuForeground;		
+		a { color: $menuForeground; text-decoration: none; }
+		&.active {background: $menuActiveBackground}
+		&.toggle-blocks {
+			background: $menuHandlerBackground;
+			.toggle-close {
+				margin-left: $menuMaxWidth - 50px;
+				display: none;
+			}
+		}
+	}
+	.list-group { border: none;}
+
+	.menu-icon { font-size: 36px; }
+	.menu-title {
+		margin-left: 1rem;
+		font-size: 20px;
+		display: none;
+	}
+
+	&.expand {
+		width: $menuMaxWidth;
+
+		.menu-title {
+			display: inline-block;
+		}
+		.toggle-blocks {
+			.toggle-open {display: none;}
+			.toggle-close {display: block;}
+		}
+	}
+}

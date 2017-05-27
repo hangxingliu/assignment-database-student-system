@@ -1,0 +1,30 @@
+<thead>
+	<tr>
+		<th >ISBN</th>
+		<th >书名</th>
+		<th >作者</th>
+		<th >发行社</th>
+		<!--<th >简介</th>-->
+		<th style="min-width: 80px">价格</th>
+		<th >库存/已借</th>
+		<th >操作</th>
+	</tr>
+	
+</thead>
+<tbody>
+	<% for(var index in data) { var item = data[index]; %>
+		<tr>
+			<td><%=item.ISBN%></td>
+			<td><%=item.BookName%></td>
+			<td><%=item.Author%></td>
+			<td><%=item.Publisher%></td>
+			<!--<td><%=item.Summary%></td>-->
+			<td><%=item.Price%> <small>元</small></td>
+			<td><%=item.BookCount || 0%> / <%=item.LendingCount || 0%></td>
+			<td><a href="#book/details_<%=item.BookInfoID%>" 
+				onclick="app.router.command('details_' + $(this).data('id'))" 
+				data-id="<%=item.BookInfoID%>">详细</a>
+			</td>
+		</tr>
+	<%}%>
+</tbody>

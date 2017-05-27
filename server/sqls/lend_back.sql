@@ -1,0 +1,2 @@
+UPDATE TOP(1) TLend SET BackTime=GETDATE() 
+WHERE LendID = @LendID AND BackTime IS NULL;

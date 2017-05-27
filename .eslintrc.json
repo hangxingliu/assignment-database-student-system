@@ -9,7 +9,8 @@
     },
     "parser": "babel-eslint",
     "globals": {
-        "ejs": true
+        "ejs": true,
+        "app": true
     },
     "parserOptions": {
         "ecmaFeatures": {

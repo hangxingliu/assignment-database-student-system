@@ -1,0 +1,27 @@
+<thead>
+	<tr>
+		<th>读者编号</th>
+		<th>姓名</th>
+		<th>性别</th>
+		<th>出生日期</th>
+		<th>专业</th>
+		<th>总计借阅</th>
+		<th>操作</th>
+	</tr>
+</thead>
+<tbody>
+	<% for(var index in data) { var item = data[index]; %>
+		<tr>
+			<td><%=item.Card%></td>
+			<td><%=item.Name%></td>
+			<td><%=item.SexChinese%></td>
+			<td><%=item.Born%></td>
+			<td><%=item.Spec%></td>
+			<td><%=item.LendCount%></td>
+			<td><a href="#reader/edit_<%=item.ReaderID%>" 
+				onclick="app.router.command('edit_' + $(this).data('id'))" 
+				data-id="<%=item.ReaderID%>">编辑</a>
+			</td>
+		</tr>
+	<%}%>
+</tbody>
