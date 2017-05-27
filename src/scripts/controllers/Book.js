@@ -8,13 +8,13 @@
 	let router = { activate, deactivate, command};
 	module.exports = router;
 
-	let { request } = require('../api'),
+	let { request, apiMap } = require('../api'),
 		{ encode } = require('../form'),
 		{ render, emptyData } = require('../templates'),
 		activeFinished = false,
 		currentBookInfo = null;
 
-	const ALERT = '.alert-danger';
+	const ALERT = '.alert-danger', UPLOADER = '#coverUploader';
 	
 	let $block = $('#blockBook'),
 		$tbBooks = $('#tbBooks'),
@@ -44,6 +44,7 @@
 			case 'save': return saveBookInfo();
 			case 'add': return showAddBookDialog();
 			case 'addConfirmed': return confirmAddBook();
+			case 'uploadCover': return uploadBookCover();
 		}
 	}
 
@@ -94,5 +95,28 @@
 		$containerBtnAdd.show(); $containerBtnModify.hide();
 		activeFinished = true;
 		currentBookInfo = null;
+	}
+
+	function uploadBookCover() {
+		//@ts-ignore
+		let files = $(UPLOADER)[0].files;
+		if (!files.length) return alert("请先选择图书封面图片!");	
+		let xhr = new XMLHttpRequest();
+		let form = new FormData();
+		form.append("file", files[0]);
+		xhr.open("POST", apiMap.base + apiMap.book_upload_cover.uri +
+			`?BookInfoID=${currentBookInfo.BookInfoID}`, true);
+		xhr.onload = () => {
+			try {
+				let ret = JSON.parse(xhr.responseText);
+				if (ret.error) throw new Error(ret.error);
+			} catch (e) {
+				return alert("上传出错!\n " + e.message || e);
+			}
+			let $cover = $('#imgBookCover');
+			$cover.attr('src', $cover.data('src') + '?t=' + Date.now());
+		};
+		xhr.onerror = () => alert(`上传出错\n 服务器异常!`);
+		xhr.send(form);	
 	}
 })();

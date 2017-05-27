@@ -3,6 +3,7 @@ src:
     base: src
     assets: 
         - libs
+        - images
     pages: 
         - "index.html"
     scripts:

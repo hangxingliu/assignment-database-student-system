@@ -3,6 +3,7 @@ src/_old_*
 src/old_index.html
 count-lines.sh
 .coding-logs
+.book-covers
 
 # Logs
 logs

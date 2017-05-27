@@ -4,9 +4,6 @@ require('colors');
 
 let express = require('express'),
 	http = require('http'),
-	fs = require('fs-extra'),
-	path = require('path'),
-	multipart = require('multiparty'),
 	bodyParser = require('./middlewares/BodyParser'),
 	response404And500 = require('./middlewares/404and500'),
 	responseConvertor = require('./ResponseConvertor'),
@@ -56,18 +53,17 @@ let apiMap = {
 		params: [[requestConvertor.Book, 'data']],
 		fromBody: true
 	},
+	'POST book/uploadCover': { func: Book.uploadCover },
 	
 	'GET book/add': { func: Book.addBook, params: ['BookInfoID', 'SerialCode'] },
 
 	'GET lend/list': { func: Lend.list, params: ['page', 'len'] },
 	'GET lend/book': { func: Lend.lend, params: ['BookID', 'ReaderID'] },
 	'GET lend/back': { func: Lend.back, params: ['LendID'] },
-	// 'GET students/del': { func: Student.deletes, params: [[convert.split, 'ids']] },
 	// 'GET students/focus': { func: Student.setFocus, params: ['id', [convert.boolean, 'focus']] },
 	// 'POST students/edit': { func: Student.modify, params: ['data'], fromBody: true },
 	// 'GET class/list': {func: Student.listClasses, params: []},
 	// 'GET talks/del_img': { func: removeUploadImage, params: ['img'] },
-	// 'POST talks/upload_img': { func: uploadImage }
 };
 (function compilerApiMap() {
 	Object.keys(apiMap)	
@@ -118,7 +114,7 @@ function unpackSQLServerResult(result) {
 	return newResult;
 }
 
-function responseError(err) { return typeof err == 'object' ? err : { err } }
+function responseError(error) { return typeof error == 'object' ? error : { error } }
 
 function main() {
 	let web = express();
@@ -129,11 +125,14 @@ function main() {
 	bodyParser.bind(web);
 	//静态资源
 	web.use('/', express.static(`${__dirname}/../dist`));
+	web.use('/cover-images', express.static(Book.COVER_PATH));
+
 	//规范化请求参数(翻页...)
 	web.use(require('./middlewares/queryParameters'));
 	//RESTFUL API
 	web.use((req, res, next) => {
 		if (!req.url.startsWith(RESTFUL_API_START)) return next();
+		//eslint-disable-next-line no-unused-vars
 		let [_, controller, action] = req.url.match(RESTFUL_API_MATCH) || EMPTY_ARRAY,
 			apiFullName = `${req.method} ${controller}/${action}`;
 		log.d('api request', apiFullName.bold);

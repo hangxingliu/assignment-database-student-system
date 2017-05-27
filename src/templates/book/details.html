@@ -5,7 +5,18 @@
 			<%info=data[0]%>
 			<div class="d-flex">
 				<div class="align-self-start">
-					<img src="404" alt="封面" style="width: 150px;min-height: 200px;" class="bg-faded">
+					<img id="imgBookCover" 
+						src="cover-images/<%=info.BookInfoID%>.jpg" 
+						data-src="cover-images/<%=info.BookInfoID%>.jpg"
+						alt="封面" class="bg-faded"
+						style="width: 150px;min-height: 200px;" 
+						onerror="if(!this.src.endsWith('no-cover.svg'))this.src='images/no-cover.svg'">
+					<input type="file" id="coverUploader" style="display: none"
+						onchange="app.router.command('uploadCover')"/>
+					<p class="text-center mt-2">
+						<a href="#book" class="ion-image text-muted"
+							onclick="$('#coverUploader').click()">&nbsp;上传封面</a>
+					</p>
 				</div>
 				<div class="align-self-start ml-2 w-100">
 					<table class="table table-striped">

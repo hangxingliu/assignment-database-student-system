@@ -19,6 +19,7 @@ let apiMap = {
 	book_info_modify: { uri: 'book/modifyInfo', post: true },
 	
 	book_add: { uri: 'book/add' },
+	book_upload_cover: { uri: 'book/uploadCover', post: true },
 
 	lend_book: { uri: 'lend/book' },
 	lend_back: { uri: 'lend/back' },
@@ -92,5 +93,5 @@ function convert(data) {
 }
 
 module.exports = {
-	request
+	request, apiMap
 };
