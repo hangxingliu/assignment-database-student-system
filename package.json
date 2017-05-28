@@ -10,6 +10,10 @@
     "watch": "node ./build/build.js -w",
     "server": "node ./server/index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hangxingliu/assignment-database-student-system.git"
+  },
   "keywords": [],
   "author": "LiuYue",
   "license": "Apache-2.0",
@@ -33,6 +37,12 @@
     "watch": "*"
   },
   "dependencies": {
-    "tedious": "^2.0.0"
+    "tedious": "^2.0.0",
+    "body-parser": "*",
+    "colors": "*",
+    "express": "*",
+    "fs-extra": "*",
+    "morgan": "*",
+    "multiparty": "*"
   }
 }
