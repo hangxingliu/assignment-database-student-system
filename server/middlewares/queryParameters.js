@@ -6,7 +6,7 @@ module.exports = function (req, res, next) {
 
 	q.id = Number(q.id) || 0;
 	q.page = Number(q.page) || 1;
-	q.len = Number(q.len) || 20;
+	q.len = Number(q.len) || 100;
 	
 	q.word = q.word || '';
 
